@@ -1,0 +1,61 @@
+---
+title: "DEVELOPING DATA PRODUCTS- PEER GRADED"
+output: html_document
+---
+<html>
+<head>
+<h5>Nishant Sirohi</h5>
+<style>
+h5{
+color: Red;
+text-align: right;
+}
+h1{
+color:Brown;
+text-align: center;
+background-color: white;
+}
+h2{
+text-align: center;
+}
+body{
+background-color: cyan;
+}
+p{
+background-color: orange;
+}
+</style>
+
+<body>
+
+## CREATING MAP USING LEAFLET
+We will first create a map object as follows:
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+We will now create a marker with a picture of MIT Manipal Building.
+```{r}
+MITIcon <- makeIcon(
+  iconUrl = "https://college4u.in/wp-content/uploads/2017/01/MANIZ-768x403.jpg",
+  iconWidth = 30*408/255, iconHeight = 30,
+  iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Now we add the marke to the map and display the map.
+```{r}
+MITPopup <- c("<a href= 'https://college4u.in/wp-content/uploads/2017/01/MANIZ-768x403.jpg>MIT><img src='https://college4u.in/wp-content/uploads/2017/01/MANIZ-768x403.jpg' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+map %>%
+  addTiles() %>%
+  addMarkers(lat=13.35, lng=74.7933, popup = MITPopup)
+
+```
+</body>
+  </head>
+  </html>
+  
+
+
+
