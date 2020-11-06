@@ -1,0 +1,69 @@
+---
+title: "Developing Data Products"
+output: html_document
+---
+<html>
+<head>
+<style>
+body{
+background-color: green;
+}
+h2{
+background-color: purple;
+color:yellow;
+}
+h1{
+color: cyan;
+}
+</style>
+</head>
+<body>
+## Coursera Reproducible Pitch- WEEK 4 Assignment
+
+### Take a look at the Regression-Models Course Assignment  
+
+- URL: *https://github.com/manastiwari/Developing-Data-Products-Week-4-Course-Project*
+
+---
+
+## DataSet Used: mtcars Dataset
+
+## mtcars Data-set 
+
+| Index | Field | Detail |
+------- | ----- | ------ |
+| [, 1] | mpg | Miles/(US) gallon |
+| [, 2]  | cyl | Number of cylinders |
+| [, 3]	| disp | Displacement (cu.in.) |
+| [, 4]	| hp | Gross horsepower |
+| [, 5]	| drat | Rear axle ratio |
+| [, 6]	| wt | Weight (lb/1000) |
+| [, 7]	| qsec | 1/4 mile time |
+| [, 8]	| vs | V/S |
+| [, 9]	| am | Transmission (0 = automatic, 1 = manual) |
+| [,10]	| gear | Number of forward gears |
+| [,11]	| carb | Number of carburetors |
+
+---
+
+## Analysis of the dataset 
+
+```r
+  formulaTextPoint <- reactive({
+    paste("mpg ~", "as.integer(", input$variable, ")")  })
+  
+  fit <- reactive({
+    lm(as.formula(formulaTextPoint()), data=mpgData)  })
+  ...
+  output$fit <- renderPrint({
+    summary(fit()) })
+  
+  output$mpgPlot <- renderPlot({
+    with(mpgData, {
+      plot(as.formula(formulaTextPoint()))
+      abline(fit(), col=2)
+    })  })
+```
+
+</body>
+</html>
